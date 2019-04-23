@@ -5,10 +5,7 @@ mod tests {
     use tokio::runtime::current_thread::Runtime;
 
     #[test]
-    fn test() {
-        // Uncomment one of the three blocks to run
-
-        /*
+    fn test_sysrunner() {
         {
             let mut sys = System::new("kapiltest");
 
@@ -19,9 +16,10 @@ mod tests {
 
             sys.run().unwrap();
         }
-        */
+    }
 
-        /*
+    #[test]
+    fn test_arbiter() {
         {
             let mut sys = System::new("kapiltest");
 
@@ -32,9 +30,10 @@ mod tests {
 
             sys.run().unwrap();
         }
-        */
+    }
 
-        /*
+    #[test]
+    fn test_tokio() {
         {
             let mut sys = Runtime::new().unwrap();
 
@@ -45,6 +44,5 @@ mod tests {
 
             sys.run().unwrap();
         }
-        */
     }
 }
