@@ -1,6 +1,7 @@
 use actix_rt::{System, Arbiter};
 use futures::future::{ok, Future, lazy};
 use tokio::runtime::current_thread::Runtime;
+use core::borrow::BorrowMut;
 
 pub fn run_sysrunner() {
     {
@@ -10,8 +11,6 @@ pub fn run_sysrunner() {
             println!("{:?}", "system runner hello");
             Ok(())
         })).unwrap();
-
-        sys.run().unwrap();
     }
 }
 
@@ -21,6 +20,7 @@ pub fn run_arbiter() {
 
         Arbiter::spawn(lazy(|| {
             println!("{:?}", "arbiter hello");
+            System::with_current(|cur_sys| cur_sys.stop());
             ok(())
         }));
 

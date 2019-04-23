@@ -13,8 +13,6 @@ mod tests {
                 println!("{:?}", "system runner hello");
                 Ok(())
             })).unwrap();
-
-            sys.run().unwrap();
         }
     }
 
@@ -25,6 +23,7 @@ mod tests {
 
             Arbiter::spawn(lazy(|| {
                 println!("{:?}", "arbiter hello");
+                System::with_current(|cur_sys| cur_sys.stop());
                 ok(())
             }));
 
