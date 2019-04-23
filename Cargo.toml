@@ -1,0 +1,10 @@
+[package]
+name = "actix_rt_test"
+version = "0.1.0"
+authors = ["Kapil Agarwal <kaagarw@microsoft.com>"]
+edition = "2018"
+
+[dependencies]
+actix-rt = "0.2.2"
+futures = "0.1"
+tokio = "0.1"
